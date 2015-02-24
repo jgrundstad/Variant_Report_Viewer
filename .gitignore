@@ -1,1 +1,4 @@
-secret_settings.py
+secret_settings.py*
+*.pyc
+db.sqlite3
+my.cnf
