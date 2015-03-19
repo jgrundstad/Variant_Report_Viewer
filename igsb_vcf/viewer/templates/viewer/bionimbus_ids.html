@@ -1,0 +1,11 @@
+{% extends "viewer/base.html"%}
+{% block content %}
+<div class=container style="margin-top: 30px;">
+<table class=table>
+	<tr><th>ID</th></tr>
+	{% for i in list_of_ids %}
+	<tr><td>{{ i }}</td></tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}
