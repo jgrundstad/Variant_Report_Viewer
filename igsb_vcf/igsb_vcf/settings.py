@@ -86,3 +86,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_ROOT = BASE_DIR + '/viewer/files/'
+MEDIA_URL = '/viewer/files/'
+print "BASE_DIR: " + BASE_DIR
+print "MEDIA_ROOT: " + MEDIA_ROOT
+print "MEDIA_URL: " + MEDIA_URL

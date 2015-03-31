@@ -1,0 +1,9 @@
+{% extends "viewer/base.html" %}
+
+{% block content %}
+	<form action="{ url 'viewer/upload_vcf.html' %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<p><input type="submit" value="Upload" /> </p>
+	</form>
+{% endblock %}

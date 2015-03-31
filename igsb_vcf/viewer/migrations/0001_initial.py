@@ -11,10 +11,30 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Project',
+            name='Bnid',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('name', models.CharField(max_length=48)),
+                ('bnid', models.CharField(max_length=12)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Caller',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=64)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Case',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('name', models.CharField(max_length=64)),
             ],
             options={
             },
@@ -25,10 +45,28 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=48)),
-                ('project', models.ForeignKey(to='viewer.Project')),
+                ('bnid', models.ManyToManyField(to='viewer.Bnid')),
             ],
             options={
             },
             bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Vcf',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('vcf_file', models.FileField(upload_to=b'')),
+                ('caller', models.ForeignKey(to='viewer.Caller')),
+                ('sample', models.ManyToManyField(to='viewer.Sample')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='case',
+            name='vcf',
+            field=models.ManyToManyField(to='viewer.Vcf', blank=True),
+            preserve_default=True,
         ),
     ]
