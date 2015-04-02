@@ -2,3 +2,4 @@ secret_settings.py*
 *.pyc
 db.sqlite3
 my.cnf
+igsb_vcf/viewer/files/*

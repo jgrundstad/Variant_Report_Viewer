@@ -1,9 +1,27 @@
 {% extends "viewer/base.html" %}
 
 {% block content %}
-	<form action="{ url 'viewer/upload_vcf.html' %}" method="post" enctype="multipart/form-data">
+<div class="container" style="text-align: 'center'">
+	<p>
+	<h2>Upload a new VCF</h2>
+	<form action="/viewer/upload_vcf/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ form.as_p }}
+		{{ vcf_form.as_p }}
 		<p><input type="submit" value="Upload" /> </p>
 	</form>
+	<br>
+</div>
+<div id="the_rest" class="container" style="text-align: 'center';">
+	<h3>Current list of VCFs:</h3>
+	<table id="available" class="table table-hover tablesorter">
+		<thead>
+			<tr><th>Case</th><th>Sample</th><th>Caller</th><th>Upload Date</th></tr>
+		</thead>
+		<tbody>
+			{% for v in vcfs %}
+			<tr><td>{{v.case}}</td><td>TODO</td><td>{{v.caller}}</td><td><a href=/viewer/files/{{v.vcf_file}}>{{v}}</a></td></tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 {% endblock %}
