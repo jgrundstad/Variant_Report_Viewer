@@ -11,15 +11,26 @@
 	</form>
 	<br>
 </div>
+<hr>
 <div id="the_rest" class="container" style="text-align: 'center';">
-	<h3>Current list of VCFs:</h3>
+	<h3>Available VCFs:</h3>
 	<table id="available" class="table table-hover tablesorter">
 		<thead>
 			<tr><th>Case</th><th>Sample</th><th>Caller</th><th>Upload Date</th></tr>
 		</thead>
 		<tbody>
 			{% for v in vcfs %}
-			<tr><td>{{v.case}}</td><td>TODO</td><td>{{v.caller}}</td><td><a href=/viewer/files/{{v.vcf_file}}>{{v}}</a></td></tr>
+			<tr>
+				<td>{{v.case}}</td>
+				<td>{% for s in v.sample.all %}
+						{% for b in s.bnid_sample.all %}
+							{{s.name}} ({{b}})<br>
+						{%endfor%}
+					{%endfor%}
+				</td>
+				<td>{{v.caller}}</td>
+				<td><a href=/viewer/files/{{v.vcf_file}}>{{v}}</a></td>
+			</tr>
 			{% endfor %}
 		</tbody>
 	</table>

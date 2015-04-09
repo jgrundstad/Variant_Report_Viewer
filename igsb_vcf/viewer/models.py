@@ -33,7 +33,7 @@ class Vcf(models.Model):
 
 class Bnid(models.Model):
   bnid = models.CharField(max_length=12, verbose_name='Bionimbus ID')
-  sample = models.ForeignKey(Sample)
+  sample = models.ForeignKey(Sample, related_name="bnid_sample")
   def __str__(self):
     return self.bnid
 
