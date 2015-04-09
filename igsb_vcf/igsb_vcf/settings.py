@@ -22,10 +22,12 @@ SECRET_KEY = secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['128.135.*.*']
 
 
 # Application definition
