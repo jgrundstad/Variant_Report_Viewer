@@ -1,6 +1,15 @@
 from django.contrib.admin.widgets import AdminFileWidget
 from django import forms
 from models import Bnid, Sample, Caller, Vcf, Case
+from django.contrib.auth.models import User
+
+
+class UserForm(forms.ModelForm):
+  password = forms.CharField(widget=forms.PasswordInput())
+
+  class Meta:
+    model = User
+    fields = ('username', 'first_name', 'last_name', 'email', 'password')
 
 
 class BnidForm(forms.ModelForm):
