@@ -3,6 +3,9 @@
 {% block content %}
 <div class="container" style="padding: 50px; text-align: 'center';">
 	<h1>VCF viewer</h1>
+	{% if user.is_authenticated %}
+	<p>Hello, {{ user.first_name }}!</p>
+	{% endif %}
 </div>
 <div class="container" style="padding: 50px; background-color: #BBB; border-radius: 15px;  -webkit-border-radius: 15px; -moz-border-radius:15px;">
 	<p>

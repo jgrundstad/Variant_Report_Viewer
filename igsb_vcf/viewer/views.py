@@ -76,15 +76,17 @@ def new_case(request):
     cform = CaseForm(request.POST, instance=Case())
     if cform.is_valid():
       cform.save()
-    #return HttpResponseRedirect('/viewer/new_case/')
-    return render(request, '/viewer/new_case.html', {})
+    return HttpResponseRedirect('/viewer/new_case/')
   else:
     cform = CaseForm(instance=Case())
     context = {'case_form': cform}
     cases = Case.objects.all()
     context['cases'] = cases
     context.update(csrf(request))
-    return render(request, 'viewer/new_case.html', context)
+    return render_to_response('viewer/new_case.html', context,
+        context_instance=RequestContext(request))
+    #return object_list(request, queryset=case_list,
+    #    extra_context=context)
 
 
 @user_passes_test(in_proj_user_group)
@@ -93,14 +95,15 @@ def new_bionimbus_id(request):
     bform = BnidForm(request.POST, instance=Bnid())
     if bform.is_valid():
       bform.save()
-    return render(request, '/viewer/new_bionimbus_id.html', {})
+    return HttpResponseRedirect('/viewer/new_bionimbus_id/')
   else:
     bform = BnidForm(instance=Bnid())
     context = {'bnid_form': bform}
     bnids = Bnid.objects.all().order_by('-bnid')
     context['bnids'] = bnids
     context.update(csrf(request))
-    return render(request, 'viewer/new_bionimbus_id.html', context)
+    return render_to_response('viewer/new_bionimbus_id.html', context,
+        context_instance=RequestContext(request))
 
 
 @user_passes_test(in_proj_user_group)
@@ -109,14 +112,15 @@ def new_sample(request):
     sform = SampleForm(request.POST, instance=Sample())
     if sform.is_valid():
       sform.save()
-    return render(request, '/viewer/new_sample.html', {})
+    return HttpResponseRedirect('/viewer/new_sample')
   else:
     sform = SampleForm(instance=Sample())
     context = {'sample_form': sform}
     samples = Sample.objects.all()
     context['samples'] = samples
     context.update(csrf(request))
-    return render(request, 'viewer/new_sample.html', context)
+    return render_to_response('viewer/new_sample.html', context,
+        context_instance=RequestContext(request))
 
 
 @user_passes_test(in_proj_user_group)
@@ -125,12 +129,13 @@ def upload_vcf(request):
     vform = VcfForm(request.POST, request.FILES)
     if vform.is_valid():
       vform.save()
-      return render(request, '/viewer/upload_vcf.html', {})
+      return HttpResponseRedirect('viewer/upload_vcf.html')
   else:
     vform = VcfForm(instance=Vcf())
     context = {'vcf_form': vform}
     vcfs = Vcf.objects.all()
     context['vcfs'] = vcfs
     context.update(csrf(request))
-    return render(request, 'viewer/upload_vcf.html', context)
+    return render_to_response('viewer/upload_vcf.html', context,
+        context_instance=RequestContext(request))
 
