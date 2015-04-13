@@ -85,8 +85,6 @@ def new_case(request):
     context.update(csrf(request))
     return render_to_response('viewer/new_case.html', context,
         context_instance=RequestContext(request))
-    #return object_list(request, queryset=case_list,
-    #    extra_context=context)
 
 
 @user_passes_test(in_proj_user_group)
@@ -112,7 +110,7 @@ def new_sample(request):
     sform = SampleForm(request.POST, instance=Sample())
     if sform.is_valid():
       sform.save()
-    return HttpResponseRedirect('/viewer/new_sample')
+    return HttpResponseRedirect('/viewer/new_sample/')
   else:
     sform = SampleForm(instance=Sample())
     context = {'sample_form': sform}
@@ -129,7 +127,7 @@ def upload_vcf(request):
     vform = VcfForm(request.POST, request.FILES)
     if vform.is_valid():
       vform.save()
-      return HttpResponseRedirect('viewer/upload_vcf.html')
+      return HttpResponseRedirect('/viewer/upload_vcf/')
   else:
     vform = VcfForm(instance=Vcf())
     context = {'vcf_form': vform}
