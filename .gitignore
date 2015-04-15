@@ -4,3 +4,4 @@ db.sqlite3
 my.cnf
 igsb_vcf/viewer/files/*
 igsb_vcf/viewer/migrations/*
+.idea/

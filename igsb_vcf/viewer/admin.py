@@ -1,31 +1,31 @@
 from django.contrib import admin
-from viewer.models import Bnid, Sample
-from viewer.models import Case, Caller, Vcf
+from models import Bnid, Sample
+from models import Study, Caller, Vcf
 
 
 class BnidAdmin(admin.ModelAdmin):
-  model = Bnid
+    model = Bnid
 
 
 class SampleAdmin(admin.ModelAdmin):
-  model = Sample
+    model = Sample
 
 
 class CallerAdmin(admin.ModelAdmin):
-  display = ['name']
+    display = ['name']
 
 
 class VcfAdmin(admin.ModelAdmin):
-  model = Vcf
-  list_display = ('caller', 'vcf_file',)
+    model = Vcf
+    list_display = ('caller', 'vcf_file', )
 
 
-class CaseAdmin(admin.ModelAdmin):
-  model = Case
+class StudyAdmin(admin.ModelAdmin):
+    model = Study
 
 
 admin.site.register(Sample, SampleAdmin)
 admin.site.register(Bnid, BnidAdmin)
-admin.site.register(Case, CaseAdmin)
+admin.site.register(Study, StudyAdmin)
 admin.site.register(Caller, CallerAdmin)
 admin.site.register(Vcf, VcfAdmin)

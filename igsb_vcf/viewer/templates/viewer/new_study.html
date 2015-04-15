@@ -3,20 +3,20 @@
 {% block content %}
 <div class="container" style="text-align: 'center'">
 	<p>
-	<h2>Create a new Case</h2>
-	<form action="/viewer/new_case/" method="post" enctype="multipart/form-data">
+	<h2>Create a new Study</h2>
+	<form action="/viewer/new_study/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ case_form.as_p }}
+		{{ study_form.as_p }}
 		<input type="submit" value="Create" />
 	</form>
 	<br>
 </div>
 <hr>
 <div class="container" style="text-align: 'center'">
-	<h3>Available Cases:</h3></lh>
+	<h3>Available Studies:</h3></lh>
 	<table class="table table-hover">
-	{% for c in cases %}
-	<tr><td>{{c}}</td></tr>
+	{% for s in studies %}
+	<tr><td>{{s}}</td></tr>
 	{% endfor %}
 	</table
 </div>

@@ -15,9 +15,9 @@
 <div class="container" style="text-align: 'center'">
 	<h3>Available Bnids:</h3></lh>
 	<table class="table table-hover">
-		<tr><th>Case</th><th>Sample</th><th>BionimbusID</th></td>
+		<tr><th>Study</th><th>Sample</th><th>BionimbusID</th></td>
 		{% for b in bnids %}
-		<tr><td>{{b.sample.case}}</td><td>{{b.sample.name}}</td><td>{{b}}</td></tr>
+		<tr><td>{{b.sample.study}}</td><td>{{b.sample.name}}</td><td>{{b}}</td></tr>
 		{% endfor %}
 	</table>
 </div>

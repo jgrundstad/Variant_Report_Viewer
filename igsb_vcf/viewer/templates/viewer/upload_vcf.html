@@ -16,12 +16,12 @@
 	<h3>Available VCFs:</h3>
 	<table id="available" class="table table-hover tablesorter">
 		<thead>
-			<tr><th>Case</th><th>Sample</th><th>Caller</th><th>Upload Date</th></tr>
+			<tr><th>Study</th><th>Sample</th><th>Caller</th><th>Upload Date</th></tr>
 		</thead>
 		<tbody>
 			{% for v in vcfs %}
 			<tr>
-				<td>{{v.case}}</td>
+				<td>{{v.study}}</td>
 				<td>{% for s in v.sample.all %}
 						{% for b in s.bnid_sample.all %}
 							{{s.name}} ({{b}})<br>
