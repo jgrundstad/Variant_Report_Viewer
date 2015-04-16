@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'viewer',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -73,6 +74,11 @@ DATABASES = {
             'read_default_file': BASE_DIR + '/igsb_vcf/my.cnf',
         },
     }
+}
+
+GRAPH_MODELS = {
+    'all_applications': True,
+    'group_models': True,
 }
 
 # Internationalization

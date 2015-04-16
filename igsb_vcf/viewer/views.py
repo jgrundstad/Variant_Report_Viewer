@@ -129,7 +129,8 @@ def upload_vcf(request):
             return HttpResponseRedirect('/viewer/upload_vcf/')
     else:
         vform = VcfForm(instance=Vcf())
-        context = {'vcf_form': vform}
+        bform = BnidForm(instance=Bnid())
+        context = {'vcf_form': vform, 'bnid_form': bform}
         vcfs = Vcf.objects.all()
         context['vcfs'] = vcfs
         context.update(csrf(request))

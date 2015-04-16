@@ -6,6 +6,7 @@
 	<h2>Upload a new VCF</h2>
 	<form action="/viewer/upload_vcf/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
+		{{ bnid_form.as_p }}
 		{{ vcf_form.as_p }}
 		<p><input type="submit" value="Upload" /> </p>
 	</form>
