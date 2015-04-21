@@ -35,7 +35,7 @@
 					{%endfor%}
 				</td>
 				<td>{{r.caller}}</td>
-				<td><a href=/viewer/files/{{r.report_file}}>{{r.report_file}}</a></td>
+				<td><a href=/viewer/view_report/{{r.pk}}/>{{r.report_file.name}}</a></td>
 				<td>{{r}}</td>
 			</tr>
 			{% endfor %}

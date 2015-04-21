@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import user_passes_test
 from django.core.context_processors import csrf
@@ -8,6 +9,8 @@ from django.template import RequestContext
 from forms import BnidForm, SampleForm, ReportForm, StudyForm, UserForm
 from models import Bnid, Sample, Report, Study
 from access_tests import in_proj_user_group
+
+from util import report_parser
 
 
 def index(request):
@@ -135,3 +138,12 @@ def upload_report(request):
         context.update(csrf(request))
         return render_to_response('viewer/upload_report.html', context,
                                   context_instance=RequestContext(request))
+
+
+@user_passes_test(in_proj_user_group)
+def view_report(request, file_id):
+    # build context from file
+    print 'file_id: %s' % file_id
+    report_obj = Report.objects.get(pk=file_id)
+    report_dict = report_parser.json_from_report(settings.MEDIA_ROOT + \
+                                                 report_obj.report_file.name)
