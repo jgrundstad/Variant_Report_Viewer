@@ -15,6 +15,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('bnid', models.CharField(max_length=12, verbose_name=b'Bionimbus ID')),
+                ('description', models.CharField(max_length=256, verbose_name=b'Description', blank=True)),
             ],
             options={
             },
@@ -25,6 +26,19 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(max_length=64, verbose_name=b'Caller Name')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Report',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('upload_date', models.DateTimeField(auto_now=True, verbose_name=b'Date Uploaded')),
+                ('report_file', models.FileField(upload_to=b'', verbose_name=b'Report File')),
+                ('bnids', models.ManyToManyField(to='viewer.Bnid', verbose_name=b'Bionimbus ID')),
+                ('caller', models.ForeignKey(to='viewer.Caller')),
             ],
             options={
             },
@@ -52,22 +66,14 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.CreateModel(
-            name='Vcf',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('upload_date', models.DateTimeField(auto_now=True, verbose_name=b'Date Uploaded')),
-                ('vcf_file', models.FileField(upload_to=b'', verbose_name=b'Vcf File')),
-                ('bnids', models.ManyToManyField(to='viewer.Bnid', verbose_name=b'Bionimbus ID')),
-                ('caller', models.ForeignKey(to='viewer.Caller')),
-                ('study', models.ForeignKey(to='viewer.Study')),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
         migrations.AddField(
             model_name='sample',
+            name='study',
+            field=models.ForeignKey(to='viewer.Study'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='report',
             name='study',
             field=models.ForeignKey(to='viewer.Study'),
             preserve_default=True,

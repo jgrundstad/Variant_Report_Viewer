@@ -123,9 +123,9 @@ def new_sample(request):
 @user_passes_test(in_proj_user_group)
 def upload_report(request):
     if request.method == 'POST':
-        vform = VcfForm(request.POST, request.FILES)
-        if vform.is_valid():
-            vform.save()
+        rform = ReportForm(request.POST, request.FILES)
+        if rform.is_valid():
+            rform.save()
             return HttpResponseRedirect('/viewer/upload_report/')
     else:
         rform = ReportForm(instance=Report())
