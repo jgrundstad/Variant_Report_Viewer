@@ -1,0 +1,166 @@
+##fileformat=VCFv4.1
+##FILTER=<ID=PASS,Description="Accept as a confident somatic mutation">
+##FORMAT=<ID=AD,Number=.,Type=Integer,Description="Allelic depths for the ref and alt alleles in the order listed">
+##FORMAT=<ID=BQ,Number=A,Type=Float,Description="Average base quality for reads supporting alleles">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Approximate read depth (reads with MQ=255 or with bad mates are filtered)">
+##FORMAT=<ID=FA,Number=A,Type=Float,Description="Allele fraction of the alternate allele with regard to reference">
+##FORMAT=<ID=GQ,Number=1,Type=Integer,Description="Genotype Quality">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=PL,Number=G,Type=Integer,Description="Normalized, Phred-scaled likelihoods for genotypes as defined in the VCF specification">
+##FORMAT=<ID=SS,Number=1,Type=Integer,Description="Variant status relative to non-adjacent Normal,0=wildtype,1=germline,2=somatic,3=LOH,4=post-transcriptional modification,5=unknown">
+##GATKCommandLine=<ID=MuTect,Version=3.1-0-g72492bb,Date="Tue Apr 07 22:46:15 UTC 2015",Epoch=1428446775395,CommandLineOptions="analysis_type=MuTect input_file=[2015-523.merged.final.bam, 2015-522.merged.final.bam] showFullBamList=false read_buffer_size=null phone_home=AWS gatk_key=null tag=NA read_filter=[] intervals=[intervals_chr2.bed] excludeIntervals=null interval_set_rule=UNION interval_merging=ALL interval_padding=0 reference_sequence=/mnt/cinder/REFS_CCSET3/REFS/FASTA/hg19_karyo_ordered.fa nonDeterministicRandomSeed=false disableDithering=false maxRuntime=-1 maxRuntimeUnits=MINUTES downsampling_type=BY_SAMPLE downsample_to_fraction=null downsample_to_coverage=1000 baq=OFF baqGapOpenPenalty=40.0 fix_misencoded_quality_scores=true allow_potentially_misencoded_quality_scores=false useOriginalQualities=false defaultBaseQualities=-1 performanceLog=null BQSR=null quantize_quals=0 disable_indel_quals=false emit_original_quals=false preserve_qscores_less_than=6 globalQScorePrior=-1.0 validation_strictness=SILENT remove_program_records=false keep_program_records=false sample_rename_mapping_file=null unsafe=null disable_auto_index_creation_and_locking_when_reading_rods=false num_threads=1 num_cpu_threads_per_data_thread=1 num_io_threads=0 monitorThreadEfficiency=false num_bam_file_handles=null read_group_black_list=null pedigree=[] pedigreeString=[] pedigreeValidationType=STRICT allow_intervals_with_unindexed_bam=false generateShadowBCF=false variant_index_type=DYNAMIC_SEEK variant_index_parameter=-1 logging_level=INFO log_to_file=LOGS/2015-522_2015-523.mut.chr2.log help=false version=false noop=false enable_extended_output=true enable_qscore_output=false artifact_detection_mode=false tumor_sample_name=2015-522 bam_tumor_sample_name=null normal_sample_name=2015-523 force_output=false force_alleles=false only_passing_calls=false initial_tumor_lod=4.0 tumor_lod=6.3 fraction_contamination=0.02 minimum_mutation_cell_fraction=0.0 normal_lod=2.2 normal_artifact_lod=1.0 strand_artifact_lod=2.0 strand_artifact_power_threshold=0.0 dbsnp_normal_lod=5.5 minimum_normal_allele_fraction=0.0 tumor_f_pretest=0.005 min_qscore=5 gap_events_threshold=3 heavily_clipped_read_fraction=0.3 fraction_mapq0_threshold=0.5 pir_median_threshold=10.0 pir_mad_threshold=3.0 required_maximum_alt_allele_mapping_quality_score=20 max_alt_alleles_in_normal_count=2 max_alt_alleles_in_normal_qscore_sum=20 max_alt_allele_in_normal_fraction=0.03 power_constant_qscore=30 power_constant_af=0.30000001192092896 vcf=org.broadinstitute.sting.gatk.io.stubs.VariantContextWriterStub no_cmdline_in_header=org.broadinstitute.sting.gatk.io.stubs.VariantContextWriterStub sites_only=org.broadinstitute.sting.gatk.io.stubs.VariantContextWriterStub bcf=org.broadinstitute.sting.gatk.io.stubs.VariantContextWriterStub dbsnp=[] cosmic=[] normal_panel=[] coverage_file=null coverage_20_q20_file=null power_file=null tumor_depth_file=null normal_depth_file=null filter_reads_with_N_cigar=false filter_mismatching_base_and_quals=false filter_bases_not_stored=false">
+##INFO=<ID=DB,Number=0,Type=Flag,Description="dbSNP Membership">
+##INFO=<ID=MQ0,Number=1,Type=Integer,Description="Total Mapping Quality Zero Reads">
+##INFO=<ID=SOMATIC,Number=0,Type=Flag,Description="Somatic event">
+##INFO=<ID=VT,Number=1,Type=String,Description="Variant type, can be SNP, INS or DEL">
+##contig=<ID=chr1,length=249250621,assembly=hg19>
+##contig=<ID=chr1_gl000191_random,length=106433,assembly=hg19>
+##contig=<ID=chr1_gl000192_random,length=547496,assembly=hg19>
+##contig=<ID=chr2,length=243199373,assembly=hg19>
+##contig=<ID=chr3,length=198022430,assembly=hg19>
+##contig=<ID=chr4,length=191154276,assembly=hg19>
+##contig=<ID=chr4_ctg9_hap1,length=590426,assembly=hg19>
+##contig=<ID=chr4_gl000193_random,length=189789,assembly=hg19>
+##contig=<ID=chr4_gl000194_random,length=191469,assembly=hg19>
+##contig=<ID=chr5,length=180915260,assembly=hg19>
+##contig=<ID=chr6,length=171115067,assembly=hg19>
+##contig=<ID=chr6_apd_hap1,length=4622290,assembly=hg19>
+##contig=<ID=chr6_cox_hap2,length=4795371,assembly=hg19>
+##contig=<ID=chr6_dbb_hap3,length=4610396,assembly=hg19>
+##contig=<ID=chr6_mann_hap4,length=4683263,assembly=hg19>
+##contig=<ID=chr6_mcf_hap5,length=4833398,assembly=hg19>
+##contig=<ID=chr6_qbl_hap6,length=4611984,assembly=hg19>
+##contig=<ID=chr6_ssto_hap7,length=4928567,assembly=hg19>
+##contig=<ID=chr7,length=159138663,assembly=hg19>
+##contig=<ID=chr7_gl000195_random,length=182896,assembly=hg19>
+##contig=<ID=chr8,length=146364022,assembly=hg19>
+##contig=<ID=chr8_gl000196_random,length=38914,assembly=hg19>
+##contig=<ID=chr8_gl000197_random,length=37175,assembly=hg19>
+##contig=<ID=chr9,length=141213431,assembly=hg19>
+##contig=<ID=chr9_gl000198_random,length=90085,assembly=hg19>
+##contig=<ID=chr9_gl000199_random,length=169874,assembly=hg19>
+##contig=<ID=chr9_gl000200_random,length=187035,assembly=hg19>
+##contig=<ID=chr9_gl000201_random,length=36148,assembly=hg19>
+##contig=<ID=chr10,length=135534747,assembly=hg19>
+##contig=<ID=chr11,length=135006516,assembly=hg19>
+##contig=<ID=chr11_gl000202_random,length=40103,assembly=hg19>
+##contig=<ID=chr12,length=133851895,assembly=hg19>
+##contig=<ID=chr13,length=115169878,assembly=hg19>
+##contig=<ID=chr14,length=107349540,assembly=hg19>
+##contig=<ID=chr15,length=102531392,assembly=hg19>
+##contig=<ID=chr16,length=90354753,assembly=hg19>
+##contig=<ID=chr17,length=81195210,assembly=hg19>
+##contig=<ID=chr17_ctg5_hap1,length=1680828,assembly=hg19>
+##contig=<ID=chr17_gl000203_random,length=37498,assembly=hg19>
+##contig=<ID=chr17_gl000204_random,length=81310,assembly=hg19>
+##contig=<ID=chr17_gl000205_random,length=174588,assembly=hg19>
+##contig=<ID=chr17_gl000206_random,length=41001,assembly=hg19>
+##contig=<ID=chr18,length=78077248,assembly=hg19>
+##contig=<ID=chr18_gl000207_random,length=4262,assembly=hg19>
+##contig=<ID=chr19,length=59128983,assembly=hg19>
+##contig=<ID=chr19_gl000208_random,length=92689,assembly=hg19>
+##contig=<ID=chr19_gl000209_random,length=159169,assembly=hg19>
+##contig=<ID=chr20,length=63025520,assembly=hg19>
+##contig=<ID=chr21,length=48129895,assembly=hg19>
+##contig=<ID=chr21_gl000210_random,length=27682,assembly=hg19>
+##contig=<ID=chr22,length=51304566,assembly=hg19>
+##contig=<ID=chrX,length=155270560,assembly=hg19>
+##contig=<ID=chrY,length=59373566,assembly=hg19>
+##contig=<ID=chrM,length=16571,assembly=hg19>
+##contig=<ID=chrUn_gl000211,length=166566,assembly=hg19>
+##contig=<ID=chrUn_gl000212,length=186858,assembly=hg19>
+##contig=<ID=chrUn_gl000213,length=164239,assembly=hg19>
+##contig=<ID=chrUn_gl000214,length=137718,assembly=hg19>
+##contig=<ID=chrUn_gl000215,length=172545,assembly=hg19>
+##contig=<ID=chrUn_gl000216,length=172294,assembly=hg19>
+##contig=<ID=chrUn_gl000217,length=172149,assembly=hg19>
+##contig=<ID=chrUn_gl000218,length=161147,assembly=hg19>
+##contig=<ID=chrUn_gl000219,length=179198,assembly=hg19>
+##contig=<ID=chrUn_gl000220,length=161802,assembly=hg19>
+##contig=<ID=chrUn_gl000221,length=155397,assembly=hg19>
+##contig=<ID=chrUn_gl000222,length=186861,assembly=hg19>
+##contig=<ID=chrUn_gl000223,length=180455,assembly=hg19>
+##contig=<ID=chrUn_gl000224,length=179693,assembly=hg19>
+##contig=<ID=chrUn_gl000225,length=211173,assembly=hg19>
+##contig=<ID=chrUn_gl000226,length=15008,assembly=hg19>
+##contig=<ID=chrUn_gl000227,length=128374,assembly=hg19>
+##contig=<ID=chrUn_gl000228,length=129120,assembly=hg19>
+##contig=<ID=chrUn_gl000229,length=19913,assembly=hg19>
+##contig=<ID=chrUn_gl000230,length=43691,assembly=hg19>
+##contig=<ID=chrUn_gl000231,length=27386,assembly=hg19>
+##contig=<ID=chrUn_gl000232,length=40652,assembly=hg19>
+##contig=<ID=chrUn_gl000233,length=45941,assembly=hg19>
+##contig=<ID=chrUn_gl000234,length=40531,assembly=hg19>
+##contig=<ID=chrUn_gl000235,length=34474,assembly=hg19>
+##contig=<ID=chrUn_gl000236,length=41934,assembly=hg19>
+##contig=<ID=chrUn_gl000237,length=45867,assembly=hg19>
+##contig=<ID=chrUn_gl000238,length=39939,assembly=hg19>
+##contig=<ID=chrUn_gl000239,length=33824,assembly=hg19>
+##contig=<ID=chrUn_gl000240,length=41933,assembly=hg19>
+##contig=<ID=chrUn_gl000241,length=42152,assembly=hg19>
+##contig=<ID=chrUn_gl000242,length=43523,assembly=hg19>
+##contig=<ID=chrUn_gl000243,length=43341,assembly=hg19>
+##contig=<ID=chrUn_gl000244,length=39929,assembly=hg19>
+##contig=<ID=chrUn_gl000245,length=36651,assembly=hg19>
+##contig=<ID=chrUn_gl000246,length=38154,assembly=hg19>
+##contig=<ID=chrUn_gl000247,length=36422,assembly=hg19>
+##contig=<ID=chrUn_gl000248,length=39786,assembly=hg19>
+##contig=<ID=chrUn_gl000249,length=38502,assembly=hg19>
+##reference=file:///mnt/cinder/REFS_CCSET3/REFS/FASTA/hg19_karyo_ordered.fa
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	2015-523	2015-522
+chr1	38187447	.	A	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:8,0:.:8:0.00:0	0/1:2,6:36:8:0.750:2
+chr1	120468325	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:81,0:.:81:0.00:0	0/1:88,4:39:92:0.043:2
+chr1	170688703	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:17,0:.:17:0.00:0	0/1:8,2:40:10:0.200:2
+chr1	228558377	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:71,0:.:71:0.00:0	0/1:39,3:40:42:0.071:2
+chr2	73456346	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:12,0:.:12:0.00:0	0/1:4,2:39:6:0.333:2
+chr2	97216315	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:16,0:.:16:0.00:0	0/1:13,2:40:15:0.133:2
+chr3	38622627	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:10,2:40:12:0.167:2
+chr3	39135799	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:8,0:.:8:0.00:0	0/1:12,2:40:14:0.143:2
+chr3	187463391	.	A	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:315,0:.:315:0.00:0	0/1:390,81:38:471:0.172:2
+chr3	195597372	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:20,0:.:20:0.00:0	0/1:11,2:40:13:0.154:2
+chr4	49121614	.	A	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:14,0:.:12:0.00:0	0/1:2,2:40:4:0.500:2
+chr4	55597459	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:397,0:.:398:0.00:0	0/1:523,19:36:545:0.035:2
+chr4	119559123	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:11,0:.:10:0.00:0	0/1:11,2:39:13:0.154:2
+chr5	180039764	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:13,0:.:13:0.00:0	0/1:14,2:40:16:0.125:2
+chr6	41555285	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:19,0:.:19:0.00:0	0/1:22,3:39:25:0.120:2
+chr6	58776735	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:40,0:.:40:0.00:0	0/1:21,3:39:24:0.125:2
+chr6	58777790	.	C	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:13,0:.:13:0.00:0	0/1:33,4:40:37:0.108:2
+chr6	116360379	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:56,0:.:57:0.00:0	0/1:80,4:39:84:0.048:2
+chr6	158663825	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:11,2:40:13:0.154:2
+chr6	166921726	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:100,0:.:100:0.00:0	0/1:86,4:36:90:0.044:2
+chr7	71036050	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:8,0:.:8:0.00:0	0/1:11,2:40:13:0.154:2
+chr8	43831617	.	C	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:15,0:.:14:0.00:0	0/1:7,4:37:11:0.364:2
+chr8	93107590	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:14,2:40:17:0.125:2
+chr9	133762426	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:78,0:.:78:0.00:0	0/1:81,4:39:85:0.047:2
+chr10	42384569	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:40,0:.:27:0.00:0	0/1:3,2:39:5:0.400:2
+chr11	34104279	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:56,0:.:56:0.00:0	0/1:93,4:40:97:0.041:2
+chr11	62744436	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:31,0:.:31:0.00:0	0/1:35,3:38:38:0.079:2
+chr11	64573501	.	T	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:10,0:.:10:0.00:0	0/1:12,2:40:14:0.143:2
+chr11	71729399	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:87,0:.:87:0.00:0	0/1:93,4:39:97:0.041:2
+chr11	118518664	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:23,0:.:25:0.00:0	0/1:14,2:40:16:0.125:2
+chr12	2757561	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:85,0:.:86:0.00:0	0/1:100,5:39:105:0.048:2
+chr14	60864617	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:128,0:.:129:0.00:0	0/1:166,29:39:197:0.149:2
+chr15	88489049	.	A	C	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:77,0:.:77:0.00:0	0/1:66,4:35:70:0.057:2
+chr16	2136147	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:18,0:.:18:0.00:0	0/1:14,2:40:16:0.125:2
+chr16	46391941	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:29,0:.:28:0.00:0	0/1:39,3:39:42:0.071:2
+chr16	46392188	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:19,0:.:16:0.00:0	0/1:14,2:40:16:0.125:2
+chr16	46394440	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:3,2:40:5:0.400:2
+chr16	46394533	.	C	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:14,0:.:5:0.00:0	0/1:6,5:39:11:0.455:2
+chr17	5436130	.	C	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:87,1:.:88:0.011:0	0/1:106,5:39:112:0.045:2
+chr17	38574019	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:27,0:.:27:0.00:0	0/1:28,3:39:31:0.097:2
+chr18	30349879	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:61,0:.:63:0.00:0	0/1:92,4:39:96:0.042:2
+chr19	5206959	.	T	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:24,0:.:24:0.00:0	0/1:10,2:39:12:0.167:2
+chr19	8161123	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:15,0:.:15:0.00:0	0/1:10,2:40:12:0.167:2
+chr19	10277245	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:136,0:.:136:0.00:0	0/1:131,5:40:136:0.037:2
+chr19	45868320	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:56,0:.:56:0.00:0	0/1:59,4:40:63:0.063:2
+chr20	62326025	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:10,0:.:10:0.00:0	0/1:10,2:40:12:0.167:2
+chr22	30000003	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:46,0:.:46:0.00:0	0/1:72,4:38:76:0.053:2
+chr22	36681920	.	C	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:13,2:40:15:0.133:2
+chrX	48891467	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:12,0:.:12:0.00:0	0/1:13,2:40:15:0.133:2
+chrX	53222469	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:11,0:.:11:0.00:0	0/1:8,2:39:11:0.200:2
+chrM	9509	.	T	C	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:47,1:.:49:0.021:0	0/1:4,3:40:7:0.429:2
+chrUn_gl000220	125111	.	C	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:6,2:40:8:0.250:2
+chrUn_gl000220	128110	.	C	G	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:8,0:.:8:0.00:0	0/1:10,4:39:14:0.286:2
+chrUn_gl000220	128164	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:7,2:39:9:0.222:2
+chrUn_gl000220	128656	.	G	A	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:9,0:.:9:0.00:0	0/1:10,3:38:13:0.231:2
+chrUn_gl000226	7000	.	G	T	.	PASS	SOMATIC;VT=SNP	GT:AD:BQ:DP:FA:SS	0:27,0:.:22:0.00:0	0/1:10,2:40:12:0.167:2

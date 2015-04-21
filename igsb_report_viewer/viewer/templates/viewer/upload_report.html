@@ -1,0 +1,45 @@
+{% extends "viewer/base.html" %}
+
+{% block content %}
+<div class="container" style="text-align: 'center'">
+	<p>
+	<h2>Upload a new Variant Report</h2>
+	<form action="/viewer/upload_report/" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<table>
+			{{ report_form.as_table }}
+		</table>
+		<p><input type="submit" value="Upload" /> </p>
+	</form>
+	<br>
+</div>
+<hr>
+<div id="the_rest" class="container" style="text-align: 'center';">
+	<h3>Available Variant Reports:</h3>
+	<table id="available" class="table table-hover tablesorter">
+		<thead>
+			<tr>
+				<th>Study</th>
+				<th>Sample</th>
+				<th>Caller</th>
+				<th>Filename</th>
+				<th>Upload Date</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for r in reports %}
+			<tr>
+				<td>{{r.study}}</td>
+				<td>{% for b in r.bnids.all %}
+						{{b.sample}} ({{b.bnid}})<br>
+					{%endfor%}
+				</td>
+				<td>{{r.caller}}</td>
+				<td><a href=/viewer/files/{{r.report_file}}>{{r.report_file}}</a></td>
+				<td>{{r}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock %}
