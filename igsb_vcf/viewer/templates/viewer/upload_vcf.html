@@ -6,8 +6,9 @@
 	<h2>Upload a new VCF</h2>
 	<form action="/viewer/upload_vcf/" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		{{ bnid_form.as_p }}
-		{{ vcf_form.as_p }}
+		<table>
+			{{ vcf_form.as_table }}
+		</table>
 		<p><input type="submit" value="Upload" /> </p>
 	</form>
 	<br>
@@ -17,20 +18,25 @@
 	<h3>Available VCFs:</h3>
 	<table id="available" class="table table-hover tablesorter">
 		<thead>
-			<tr><th>Study</th><th>Sample</th><th>Caller</th><th>Upload Date</th></tr>
+			<tr>
+				<th>Study</th>
+				<th>Sample</th>
+				<th>Caller</th>
+				<th>Filename</th>
+				<th>Upload Date</th>
+			</tr>
 		</thead>
 		<tbody>
 			{% for v in vcfs %}
 			<tr>
 				<td>{{v.study}}</td>
-				<td>{% for s in v.sample.all %}
-						{% for b in s.bnid_sample.all %}
-							{{s.name}} ({{b}})<br>
-						{%endfor%}
+				<td>{% for b in v.bnids.all %}
+						{{b.sample}} ({{b.bnid}})<br>
 					{%endfor%}
 				</td>
 				<td>{{v.caller}}</td>
-				<td><a href=/viewer/files/{{v.vcf_file}}>{{v}}</a></td>
+				<td><a href=/viewer/files/{{v.vcf_file}}>{{v.vcf_file}}</a></td>
+				<td>{{v}}</td>
 			</tr>
 			{% endfor %}
 		</tbody>

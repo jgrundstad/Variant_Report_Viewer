@@ -9,24 +9,25 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password')
+        fields = ['username', 'first_name', 'last_name', 'email', 'password']
 
 
 class BnidForm(forms.ModelForm):
     class Meta:
         model = Bnid
-        fields = ['sample', 'bnid']
+        fields = ['sample', 'bnid', 'description']
 
 
 class SampleForm(forms.ModelForm):
     class Meta:
         model = Sample
-        fields = ['study', 'name']
+        fields = ['study', 'name', 'description']
 
 
 class CallerForm(forms.ModelForm):
     class Meta:
         model = Caller
+        fields = ['name']
 
 
 class VcfForm(forms.ModelForm):
@@ -34,9 +35,10 @@ class VcfForm(forms.ModelForm):
 
     class Meta:
         model = Vcf
-        fields = ['study', 'sample', 'caller', 'vcf_file']
+        fields = ['study', 'bnids', 'caller', 'vcf_file']
 
 
 class StudyForm(forms.ModelForm):
     class Meta:
         model = Study
+        fields = ['name', 'description']

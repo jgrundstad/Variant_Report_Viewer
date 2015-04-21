@@ -22,6 +22,7 @@ class VcfAdmin(admin.ModelAdmin):
 
 class StudyAdmin(admin.ModelAdmin):
     model = Study
+    list_display = ('name', 'description')
 
 
 admin.site.register(Sample, SampleAdmin)
