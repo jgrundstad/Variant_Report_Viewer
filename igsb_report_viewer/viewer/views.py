@@ -12,6 +12,8 @@ from access_tests import in_proj_user_group
 
 from util import report_parser
 
+import tablib
+
 
 def index(request):
     return render(request, 'viewer/index.html', {})
@@ -145,5 +147,13 @@ def view_report(request, file_id):
     # build context from file
     print 'file_id: %s' % file_id
     report_obj = Report.objects.get(pk=file_id)
-    report_dict = report_parser.json_from_report(settings.MEDIA_ROOT + \
+    report_data = report_parser.json_from_report(settings.MEDIA_ROOT + \
                                                  report_obj.report_file.name)
+    report_html = str(report_data.html)
+    report_html = report_html.replace("<table>",
+                                      '<table class="table table-bordered">')
+    print report_html
+    context = {'report_html': report_html,
+               'filename': report_obj.report_file.name}
+    return render_to_response('viewer/view_report.html', context,
+                              context_instance=RequestContext(request))

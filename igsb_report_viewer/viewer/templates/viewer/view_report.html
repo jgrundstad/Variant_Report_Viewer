@@ -1,6 +1,11 @@
 {% extends "viewer/base.html" %}
 
 {% block content %}
-
-
+<div class="container">
+    <h2>{{filename}}</h2>
+</div>
+<hr>
+<div>
+    {{report_html|safe}}
+</div>
 {% endblock %}

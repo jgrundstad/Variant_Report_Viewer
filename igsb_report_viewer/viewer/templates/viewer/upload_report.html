@@ -30,7 +30,8 @@
 			{% for r in reports %}
 			<tr>
 				<td>{{r.study}}</td>
-				<td>{% for b in r.bnids.all %}
+				<td>
+					{% for b in r.bnids.all %}
 						{{b.sample}} ({{b.bnid}})<br>
 					{%endfor%}
 				</td>
