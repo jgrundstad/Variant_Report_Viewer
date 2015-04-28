@@ -1,9 +1,13 @@
 __author__ = 'Jason Grundstad'
+from django.conf import settings
 from bs4 import BeautifulSoup
+import json
 import requests
 import re
 
+
 MD_ANDERSON_URL = 'https://pct.mdanderson.org'
+MD_ANDERSON_OUTFILE = settings.LINKS_OUT + 'mdanderson.json'
 
 
 def merge_dicts(x, y):
@@ -72,4 +76,15 @@ def grab_mdanderson():
         # is there another page to pull from
         page = find_mdanderson_next_page(soup)
 
-    return gene_list
+    # dump gene_list dict to json file for report_parser.py to grab
+    gene_list_json = json.dumps(gene_list)
+    with open(MD_ANDERSON_OUTFILE, 'w') as f:
+        json.dump(gene_list_json, f)
+
+
+def main():
+    grab_mdanderson()
+
+
+if __name__ == '__main__':
+    main()

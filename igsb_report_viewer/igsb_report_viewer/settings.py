@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'viewer',
     'django_extensions',
+    'django_crontab',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,6 +77,13 @@ DATABASES = {
     }
 }
 
+CRONJOBS = [
+        #('* * * * *', 
+        #    'viewer.links_out.cron.run_cron_test')
+        ('10 2 * * *',
+            'viewer.links_out.cron.gather_md_anderson')
+]
+
 GRAPH_MODELS = {
     'all_applications': True,
     'group_models': True,
@@ -99,11 +107,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-
 MEDIA_ROOT = BASE_DIR + '/viewer/files/'
 MEDIA_URL = '/viewer/files/'
+LINKS_OUT = BASE_DIR + '/viewer/links_out/'
+LOGIN_URL = '/viewer/login/'
+
 print "BASE_DIR: " + BASE_DIR
 print "MEDIA_ROOT: " + MEDIA_ROOT
 print "MEDIA_URL: " + MEDIA_URL
-
-LOGIN_URL = '/viewer/login/'
+print "LINKS_OUT: " + LINKS_OUT

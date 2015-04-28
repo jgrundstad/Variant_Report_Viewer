@@ -5,7 +5,19 @@
     <h2>{{filename}}</h2>
 </div>
 <hr>
-<div>
+<div style="height: 100%; overflow: auto">
+    <!--<style>
+        th{
+            text-align: left;
+	        white-space: nowrap;
+	        height: 150px;
+	        transform:
+		        translate(-60px, 0px)
+		        rotate(270deg);
+            width: 30px;
+        }
+    </style>-->
+    <style>td{ text-align: center;}</style>
     {{report_html|safe}}
 </div>
 {% endblock %}
