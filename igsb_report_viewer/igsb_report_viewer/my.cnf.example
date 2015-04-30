@@ -1,0 +1,6 @@
+[client]
+database = <mysql_database_name>
+user = <db username>
+password = <db user password>
+host = localhost
+default-character-set = utf8
