@@ -5,3 +5,4 @@ my.cnf
 igsb_report_viewer/viewer/files/**
 .idea/
 igsb_report_viewer/restart*
+igsb_report_viewer/graph.png
