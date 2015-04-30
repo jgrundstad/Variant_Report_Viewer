@@ -6,13 +6,14 @@ import tablib
 
 
 def add_goodies(atoms, headers, md_anderson_genes):
-    print "headers: %s\natoms: %s" % (headers, atoms)
     for i in range(0, len(headers)):
-
+        if not atoms[i]:
+            atoms[i] = ''
+        # highlight NON_SYNONYMOUS_CODING
         if(headers[i] == 'effect' and
                    atoms[i] == 'NON_SYNONYMOUS_CODING'):
             atoms[i] = "<font color=green>%s</font>" % atoms[i]
-
+        # add MDAnderson link to appropriate gene names
         if (headers[i] == 'gene') and (atoms[i] is not None) and (
                     atoms[i].lower() in md_anderson_genes):
             new_link = '{gene}<br><font size=-2><a href={link}>MDAnderson' + \
@@ -26,7 +27,11 @@ def add_goodies(atoms, headers, md_anderson_genes):
 def json_from_report(filename):
     print "%s - creating json from: %s" % (os.getcwd(), filename)
     report_file = open(filename, 'r')
-    cols = report_file.readline().strip().split()
+    header_line = report_file.readline().strip()
+    splitby = ','
+    if '\t' in header_line:
+        splitby = '\t'
+    cols = header_line.split(splitby)
 
     with open(settings.LINKS_OUT + 'mdanderson.json', 'r') as md_f:
         md_anderson_genes = json.loads(json.load(md_f))
@@ -34,7 +39,9 @@ def json_from_report(filename):
     d = []
 
     for line in report_file:
-        tokens = line.rstrip('\n').split('\t')
+        # remove '%' character to allow numerical sorting on pct columns
+        line = line.replace('%', '')
+        tokens = line.rstrip('\n').split(splitby)
         formatted_line = add_goodies(tokens, cols, md_anderson_genes)
         d.append(formatted_line)
     data = tablib.Dataset(*d, headers=cols)

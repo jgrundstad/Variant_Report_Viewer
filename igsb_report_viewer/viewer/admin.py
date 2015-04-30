@@ -17,7 +17,7 @@ class CallerAdmin(admin.ModelAdmin):
 
 class ReportAdmin(admin.ModelAdmin):
     model = Report
-    list_display = ('caller', 'report_file', )
+    list_display = ('caller', 'report_file', 'upload_date')
 
 
 class StudyAdmin(admin.ModelAdmin):

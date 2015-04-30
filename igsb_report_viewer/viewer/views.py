@@ -150,10 +150,14 @@ def view_report(request, file_id):
     report_data = report_parser.json_from_report(settings.MEDIA_ROOT + \
                                                  report_obj.report_file.name)
     report_html = str(report_data.html)
+    # add table class and id
     report_html = report_html.replace("<table>",
-                                      '<table class="table table-bordered">')
-    print report_html
+        "<table class=\"table table-hover sortable\" id=\"report-table\">")
+
+    #print report_html
     context = {'report_html': report_html,
-               'filename': report_obj.report_file.name}
+               'filename': report_obj.report_file.name.split('/')[1],
+               'study': report_obj.bnids.first().sample.study,
+               'report_obj': report_obj}
     return render_to_response('viewer/view_report.html', context,
                               context_instance=RequestContext(request))

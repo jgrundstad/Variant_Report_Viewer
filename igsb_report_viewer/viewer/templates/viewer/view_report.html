@@ -1,22 +1,49 @@
 {% extends "viewer/base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 <div class="container">
-    <h2>{{filename}}</h2>
-</div>
-<hr>
-<div style="height: 100%; overflow: auto">
-    <!--<style>
-        th{
-            text-align: left;
-	        white-space: nowrap;
-	        height: 150px;
-	        transform:
-		        translate(-60px, 0px)
-		        rotate(270deg);
-            width: 30px;
+    <style>
+        td, th {
+            text-align: right;
         }
-    </style>-->
+        td.b {
+            text-align: right;
+            font-weight: bold;
+            background-color: #c2d2cf;
+        }
+
+    </style>
+    <table style="width: 250px" class="table table-bordered">
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="b">Report</td>
+                <td colspan="2" nowrap>{{filename}}</td>
+            </tr>
+            <tr>
+                <td class="b">Study</td>
+                <td colspan="2">{{study}}</td>
+            </tr>
+            <tr>
+                <td class="b">BionimbusIDs</td>
+                {% for b in report_obj.bnids.all %}
+                <td>{{b}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+<small>Note: columns are sortable.</small>
+<div style="height: 350px;" class="scrollable-area">
+    <style>
+        th{
+            background-color:rgba(255,255,255,1);
+            text-align: center;
+        }
+    </style>
     <style>td{ text-align: center;}</style>
     {{report_html|safe}}
 </div>
