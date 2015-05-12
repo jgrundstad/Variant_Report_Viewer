@@ -19,9 +19,10 @@
 	<table class="table table-hover">
 		<thead>
 			<tr>
-			<th>Study</th>
-			<th>Sample</th>
-			<th>Description</th>
+				<th>Study</th>
+				<th>Sample</th>
+				<th>Description</th>
+				<th>Creation Date</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,6 +31,7 @@
 					<td>{{s.study}}</td>
 					<td>{{s.name}}</td>
 					<td>{{s.description}}</td>
+					<td>{{s.creation_date}}</td>
 				</tr>
 			{% endfor %}
 		</tbody>

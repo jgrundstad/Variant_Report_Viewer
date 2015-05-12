@@ -6,6 +6,8 @@ class Study(models.Model):
     description = models.CharField(max_length=256,
                                    verbose_name="Study Description",
                                    blank=True)
+    creation_date = models.DateTimeField('Date Created', auto_now=True,
+                                         blank=True)
 
     def __str__(self):
         return self.name
@@ -24,6 +26,8 @@ class Sample(models.Model):
                                    verbose_name="Sample Description",
                                    blank=True)
     study = models.ForeignKey(Study)
+    creation_date = models.DateTimeField('Date Created', auto_now=True,
+                                         blank=True)
 
     def __str__(self):
         return str(self.name)
@@ -34,6 +38,8 @@ class Bnid(models.Model):
     bnid = models.CharField(max_length=12, verbose_name='Bionimbus ID')
     description = models.CharField(max_length=256, verbose_name='Description',
                                    blank=True)
+    creation_date = models.DateTimeField('Date Created', auto_now=True,
+                                         blank=True)
 
     def __str__(self):
         return '{} ({})'.format(str(self.sample), str(self.bnid))
